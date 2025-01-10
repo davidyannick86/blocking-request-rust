@@ -37,7 +37,9 @@ fn return_status_message(status: reqwest::StatusCode) -> String {
 
 // * This function extracts the IP address from the JSON response.
 fn get_ip_from_json(json: &str) -> Result<String, Box<dyn std::error::Error>> {
+    // * Deserialize the JSON response.
     let response: Response = serde_json::from_str(json)?;
+    // * Return the IP address.
     Ok(response.origin)
 }
 
